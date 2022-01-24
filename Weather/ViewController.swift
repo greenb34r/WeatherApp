@@ -8,12 +8,65 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        searchBar.delegate = self
     }
 
-
 }
+
+extension ViewController: UISearchBarDelegate {
+    
+        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+            
+            searchBar.resignFirstResponder() //Уйти в отставку... в данном случае убирает клавиатуру
+            let encodedString  = "\(searchBar.text!)".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+            let urlString = "http://api.weatherstack.com/current?access_key=737be9f22cf099d909aa3c6eed678889&query=\(encodedString!))" //Строка запроса, плс зам. проб на $20
+            let url = URL(string: urlString) //Делаю URL из строки запроса
+            
+            var locationName: String?
+            var temperature: Double?
+            var errorHasOccured: Bool = false
+            let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+               
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject]
+                    
+                    if let _ = json["error"] {
+                        errorHasOccured = true
+                    }
+                    
+                    if let location = json["location"] {
+                        locationName = location["name"] as? String
+                    }
+                    
+                    if let current = json["current"] {
+                        temperature = current["temperature"] as? Double
+                    }
+                    DispatchQueue.main.async { // получаем главную очередь для отрисовки UI
+                        if errorHasOccured { // Ловлю ошибку, если города нет и вывожу ERROR в лейблы
+                            self.cityLabel.text = "Такого города не существует"
+                            self.temperatureLabel.text = "ERROR"
+                            self.temperatureLabel.isHidden = true
+                        } else {
+                            self.cityLabel.text = locationName
+    //                        if let temp = temperature {
+                            self.temperatureLabel.text = "\(temperature!)"
+                            self.temperatureLabel.isHidden = false
+    //                        }
+                        }
+
+                    }
+                }
+                catch let jsonError {
+                    print(jsonError)
+                }
+            }
+            task.resume()
+        }
+    }
 

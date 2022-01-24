@@ -1,24 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Sky-Phone-Wallpaper-1080x2340-051-768x1664-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pmv-Kw-Wfx">
+                                <rect key="frame" x="-68" y="-192" width="537" height="1110"/>
+                            </imageView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="SKd-hF-ZmG">
+                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="FBS-fg-b03">
+                                <rect key="frame" x="8" y="394.5" width="398" height="107.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="90"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcK-p4-Wr9">
+                                <rect key="frame" x="110.5" y="516.5" width="193.5" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Pmv-Kw-Wfx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4ci-QM-K9R"/>
+                            <constraint firstItem="GcK-p4-Wr9" firstAttribute="top" secondItem="FBS-fg-b03" secondAttribute="bottom" constant="14.5" id="6Vz-1g-wVW"/>
+                            <constraint firstItem="Pmv-Kw-Wfx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ROR-3n-Zho"/>
+                            <constraint firstItem="SKd-hF-ZmG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VsW-1U-Wv0"/>
+                            <constraint firstItem="FBS-fg-b03" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y6I-p7-CjJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FBS-fg-b03" secondAttribute="trailing" constant="8" id="e8O-eA-FlQ"/>
+                            <constraint firstItem="FBS-fg-b03" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fDY-rn-lZk"/>
+                            <constraint firstItem="SKd-hF-ZmG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fih-hB-R04"/>
+                            <constraint firstItem="SKd-hF-ZmG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gfh-Bt-stH"/>
+                            <constraint firstItem="Pmv-Kw-Wfx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iZA-1l-SKM"/>
+                            <constraint firstItem="FBS-fg-b03" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="l9N-av-euF"/>
+                            <constraint firstItem="GcK-p4-Wr9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pJr-kl-45R"/>
+                            <constraint firstItem="Pmv-Kw-Wfx" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="pXH-31-Wkm"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="SearchBar" destination="SKd-hF-ZmG" id="J8h-HF-dty"/>
+                        <outlet property="cityLabel" destination="FBS-fg-b03" id="d9W-kE-peg"/>
+                        <outlet property="searchBar" destination="SKd-hF-ZmG" id="vtf-fu-laf"/>
+                        <outlet property="temperatureLabel" destination="GcK-p4-Wr9" id="y73-Zt-Rjd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="67.633928571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Sky-Phone-Wallpaper-1080x2340-051-768x1664-1" width="768" height="1664"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
