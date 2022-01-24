@@ -23,10 +23,10 @@ extension ViewController: UISearchBarDelegate {
     
         func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
             
-            searchBar.resignFirstResponder() //Уйти в отставку... в данном случае убирает клавиатуру
+            searchBar.resignFirstResponder()
             let encodedString  = "\(searchBar.text!)".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-            let urlString = "http://api.weatherstack.com/current?access_key=737be9f22cf099d909aa3c6eed678889&query=\(encodedString!))" //Строка запроса, плс зам. проб на $20
-            let url = URL(string: urlString) //Делаю URL из строки запроса
+            let urlString = "http://api.weatherstack.com/current?access_key=737be9f22cf099d909aa3c6eed678889&query=\(encodedString!))"
+            let url = URL(string: urlString)
             
             var locationName: String?
             var temperature: Double?
@@ -47,8 +47,8 @@ extension ViewController: UISearchBarDelegate {
                     if let current = json["current"] {
                         temperature = current["temperature"] as? Double
                     }
-                    DispatchQueue.main.async { // получаем главную очередь для отрисовки UI
-                        if errorHasOccured { // Ловлю ошибку, если города нет и вывожу ERROR в лейблы
+                    DispatchQueue.main.async {
+                        if errorHasOccured { 
                             self.cityLabel.text = "Такого города не существует"
                             self.temperatureLabel.text = "ERROR"
                             self.temperatureLabel.isHidden = true
